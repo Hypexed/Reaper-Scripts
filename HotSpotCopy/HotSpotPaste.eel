@@ -1,0 +1,62 @@
+// HotSpotCopy by Damien Stewart (Hypex)
+
+// October 16. 2018. V1.0.
+
+// Copy an item or time selection and remember cursor position as hot spot
+
+
+// Gets variable settings for re-entry
+
+function GetSetting(Name, Default, Type)
+(
+	Setting = Default;
+	HasExtState(Section, Name) ?
+	(
+		GetExtState(#String, Section, Name);
+		match(Type ? "%f" : "%d", #String, Setting);
+	);
+
+
+	Setting;
+);
+
+
+// Prints an error message
+
+function Error(Msg)
+(
+	sprintf(#Message, "Error: %s.", Msg);
+	MB(#Message, Title, 0);
+	Error = 1;
+);
+
+
+//   It begins.
+
+function main()
+(
+	Section = "HotSpotCopy";
+	ACTION_Copy = 40698;
+	ACTION_Copy_Range = 41383;
+	ACTION_Paste = 40058;
+    
+	
+//   Error checking. Make sure we have a selection.
+
+	(CountSelectedTracks(0) == 0) ?
+	(
+		Error("No tracks selected!");
+	)
+	:
+	(
+		Cursor = GetCursorPosition();
+		Offset = GetSetting("Offset", 0, 1);
+		SetEditCurPos(Cursor-Offset, 0, 0);
+		Main_OnCommand(ACTION_Paste, 0);
+		SetEditCurPos(Cursor, 0, 0);
+	);
+	
+);
+
+main();
+

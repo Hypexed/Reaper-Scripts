@@ -1,0 +1,77 @@
+// HotSpotCopy by Damien Stewart (Hypex)
+
+// October 16. 2018. V1.0.
+
+// Copy an item or time selection and remember cursor position as hot spot
+
+
+
+//     Sets variable settings for re-entry
+
+function SetSetting(Name, Value, Type)
+(
+	sprintf(#String, Type ? "%f" : "%d", Value);
+	SetExtState(Section, Name, #String, 0);
+
+);
+
+
+// Prints an error message
+
+function Error(Msg)
+(
+	sprintf(#Message, "Error: %s.", Msg);
+	MB(#Message, Title, 0);
+	Error = 1;
+);
+
+
+//   It begins.
+
+function main()
+(
+	Section = "HotSpotCopy";
+	ACTION_Copy = 40698;
+	ACTION_Copy_Range = 41383;
+	ACTION_Paste = 40058;
+	
+	
+//   Find selected item on timeline.
+
+	Cursor = GetCursorPosition();
+	Item = GetSelectedMediaItem(0, 0);
+	ItemStart = GetMediaItemInfo_Value(Item, "D_POSITION");
+	ItemLength = GetMediaItemInfo_Value(Item, "D_LENGTH");
+
+
+//   Check if user has selected a range to scan. Else we limit ourselves to the item.
+
+	GetSet_LoopTimeRange(0, 0, RangeStart, RangeEnd, 0);
+	((RangeEnd > 0) && (RangeStart != RangeEnd) && (RangeStart < Cursor) && (RangeEnd > Cursor)) ?
+	(
+		StartTime = RangeStart;
+		EndTime = RangeEnd;
+	)
+	:
+	(
+		StartTime = ItemStart;
+		EndTime = ItemStart + ItemLength;
+	); 
+	    
+	
+//   Error checking. Make sure we have a selection.
+
+	(CountSelectedMediaItems(0) == 0) ?
+	(
+		Error("No items or time selected!");
+	)
+	:
+	(
+		Main_OnCommand(ACTION_Copy_Range, 0);
+		SetSetting("Offset", Cursor-StartTime, 1);
+	);
+	
+);
+
+main();
+
