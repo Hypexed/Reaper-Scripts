@@ -5,8 +5,7 @@
 // @about
 //   # Tempo Marker List
 //
-//   Displays a list of tempo markers in active take of selected item.
-//   Within time selection.
+//   Displays a list of tempo markers within time selection.
 //
 //   Will show table with Marker, Time, Meter, BPM, Bar, Beat and Linear setting.
 //
