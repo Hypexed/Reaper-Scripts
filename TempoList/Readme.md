@@ -1,4 +1,4 @@
-# Tempo Marker List
+### Tempo Marker List
 
 Displays a list of tempo markers.
 
