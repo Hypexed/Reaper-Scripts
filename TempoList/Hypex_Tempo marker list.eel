@@ -5,7 +5,7 @@
 // @about
 //   # Tempo Marker List
 //
-//   Displays a list of tempo markers in active take of selected item.
+//   Displays a list of tempo markers.
 //
 //   Marker: Index in list.
 //   Time: On timeline.
