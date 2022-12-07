@@ -1,20 +1,20 @@
 // @description Tempo marker list in time selection
 // @author Damien Stewart (Hypex)
 // @version 1.0
-// @screenshot Example https://github.com/Hypexed/Reaper-Scripts/raw/main/TempoList.png
+// @screenshot Example https://raw.githubusercontent.com/Hypexed/Reaper-Scripts/main/TempoList/TempoList.png
 // @about
-//   # Tempo Marker List
+//   ### Tempo Marker List
 //
 //   Displays a list of tempo markers within time selection.
 //
 //   Will show table with Marker, Time, Meter, BPM, Bar, Beat and Linear setting.
 //
-//   Marker: Index in list.
-//   Time: On timeline.
-//   Meter: Time signature if set.
-//   BPM: Tempo at time.
-//   Bar: Bar set at time.
-//   Beat: Beat count at time.
+//   Marker: Index in list.  
+//   Time: On timeline.  
+//   Meter: Time signature if set.  
+//   BPM: Tempo at time.  
+//   Bar: Bar set at time.  
+//   Beat: Beat count at time.  
 //   Linear: Set if gradual change.
 
 
