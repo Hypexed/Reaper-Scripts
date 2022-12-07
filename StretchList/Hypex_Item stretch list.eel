@@ -13,7 +13,7 @@
 //   Time: On timeline.  
 //   Position: In take.  
 //   Source-Offset: In source media.  
-//   Slope: Value if any.  
+//   Slope: Value if any.
 
 function List()
 (
